@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy Valentine's Day, Jane 💕</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pangolin&family=Quicksand:wght@400;600;700&display=swap"
+    rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       min-height: 100vh;
+      min-height: 100dvh;
       width: 100%;
       background: radial-gradient(ellipse at 50% 30%, #fff0f3 0%, #ffd6e0 40%, #ffc2d1 70%, #ffb3c6 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
       position: relative;
       font-family: 'Georgia', 'Palatino Linotype', serif;
       transition: background 1s ease;
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+      -webkit-tap-highlight-color: transparent;
     }
 
     body.yes-stage {
@@ -27,58 +37,146 @@
     }
 
     @keyframes floatUp {
-      0% { transform: translateY(0) rotate(0deg); opacity: 0.15; }
-      50% { opacity: 0.25; }
-      100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.15;
+      }
+
+      50% {
+        opacity: 0.25;
+      }
+
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
     }
 
     @keyframes confettiFall {
-      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+      }
     }
 
     @keyframes fireworkBurst {
-      0% { transform: translate(0, 0) scale(1); opacity: 1; }
-      100% { transform: translate(var(--dx), var(--dy)) scale(0); opacity: 0; }
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translate(var(--dx), var(--dy)) scale(0);
+        opacity: 0;
+      }
     }
 
     @keyframes gentleBounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
     }
 
     @keyframes shakeIt {
-      0%, 100% { transform: translateX(0); }
-      20% { transform: translateX(-12px) rotate(-2deg); }
-      40% { transform: translateX(12px) rotate(2deg); }
-      60% { transform: translateX(-8px) rotate(-1deg); }
-      80% { transform: translateX(8px) rotate(1deg); }
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      20% {
+        transform: translateX(-12px) rotate(-2deg);
+      }
+
+      40% {
+        transform: translateX(12px) rotate(2deg);
+      }
+
+      60% {
+        transform: translateX(-8px) rotate(-1deg);
+      }
+
+      80% {
+        transform: translateX(8px) rotate(1deg);
+      }
     }
 
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @keyframes letterSlideUp {
-      from { opacity: 0; transform: translateY(40px) scale(0.95); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
+      from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
     @keyframes sparkle {
-      0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
-      50% { opacity: 1; transform: scale(1) rotate(180deg); }
+
+      0%,
+      100% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1) rotate(180deg);
+      }
     }
 
     @keyframes heartBeat {
-      0%, 100% { transform: scale(1); }
-      15% { transform: scale(1.3); }
-      30% { transform: scale(1); }
-      45% { transform: scale(1.2); }
-      60% { transform: scale(1); }
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      15% {
+        transform: scale(1.3);
+      }
+
+      30% {
+        transform: scale(1);
+      }
+
+      45% {
+        transform: scale(1.2);
+      }
+
+      60% {
+        transform: scale(1);
+      }
     }
 
-    .shake { animation: shakeIt 0.5s ease; }
+    .shake {
+      animation: shakeIt 0.5s ease;
+    }
 
     .floating-heart {
       position: fixed;
@@ -99,14 +197,22 @@
       font-weight: 700;
       font-size: 18px;
       letter-spacing: 1px;
-      box-shadow: 0 6px 30px rgba(255,77,109,0.4), 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 30px rgba(255, 77, 109, 0.4), 0 2px 8px rgba(0, 0, 0, 0.1);
       transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
       position: relative;
       z-index: 10;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
+
     .yes-btn:hover {
-      box-shadow: 0 8px 40px rgba(255,77,109,0.6), 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 8px 40px rgba(255, 77, 109, 0.6), 0 4px 12px rgba(0, 0, 0, 0.15);
       filter: brightness(1.05);
+    }
+
+    .yes-btn:active {
+      transform: scale(0.97);
+      filter: brightness(0.95);
     }
 
     .no-btn {
@@ -121,7 +227,11 @@
       font-size: 15px;
       transition: all 0.25s ease;
       z-index: 10;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      min-height: 44px;
     }
+
     .no-btn:hover {
       border-color: #ccc;
       color: #666;
@@ -141,7 +251,9 @@
       gap: 28px;
       animation: fadeInUp 0.8s ease forwards;
       z-index: 10;
-      padding: 0 24px;
+      padding: 20px 24px;
+      width: 100%;
+      max-width: 600px;
     }
 
     #yes-stage {
@@ -151,27 +263,28 @@
       gap: 24px;
       animation: fadeInUp 0.8s ease forwards;
       z-index: 10;
-      padding: 0 24px;
+      padding: 20px 24px 80px;
+      width: 100%;
+      max-width: 600px;
     }
 
     .emoji-main {
-      font-size: 72px;
+      font-size: clamp(56px, 12vw, 72px);
       animation: gentleBounce 2s ease-in-out infinite;
       transition: font-size 0.3s ease;
     }
 
     .title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Pangolin', cursive;
       font-size: clamp(28px, 6vw, 48px);
       color: #8b1a3a;
       text-align: center;
-      font-weight: 700;
-      line-height: 1.2;
-      text-shadow: 0 2px 8px rgba(139,26,58,0.08);
+      font-weight: 400;
+      line-height: 1.3;
+      text-shadow: 0 2px 8px rgba(139, 26, 58, 0.08);
     }
 
     .title span {
-      font-style: italic;
       color: #c9184a;
     }
 
@@ -189,6 +302,8 @@
       align-items: center;
       flex-wrap: wrap;
       justify-content: center;
+      width: 100%;
+      padding: 0 8px;
     }
 
     .yes-emoji {
@@ -197,12 +312,12 @@
     }
 
     .yes-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(32px, 7vw, 56px);
+      font-family: 'Pangolin', cursive;
+      font-size: clamp(30px, 7vw, 52px);
       color: #8b1a3a;
       text-align: center;
-      font-weight: 700;
-      line-height: 1.2;
+      font-weight: 400;
+      line-height: 1.3;
     }
 
     .yes-message {
@@ -246,42 +361,53 @@
     }
 
     .envelope {
-      width: 240px;
-      height: 160px;
+      width: min(240px, 70vw);
+      height: min(160px, 46vw);
       background: linear-gradient(145deg, #fff5f7, #ffe0e6);
       border-radius: 8px;
       position: relative;
-      box-shadow: 0 8px 32px rgba(255,77,109,0.2);
+      box-shadow: 0 8px 32px rgba(255, 77, 109, 0.2);
       transition: transform 0.3s ease;
       margin: 0 auto;
     }
-    .envelope:hover { transform: scale(1.05); }
+
+    .envelope:hover {
+      transform: scale(1.05);
+    }
 
     .envelope-flap {
       position: absolute;
-      top: 0; left: 0;
-      width: 0; height: 0;
-      border-left: 120px solid transparent;
-      border-right: 120px solid transparent;
-      border-top: 90px solid #ffb3c6;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: calc(min(240px, 70vw) / 2) solid transparent;
+      border-right: calc(min(240px, 70vw) / 2) solid transparent;
+      border-top: calc(min(160px, 46vw) * 0.5625) solid #ffb3c6;
       transform-origin: top center;
       transition: transform 0.6s ease;
       z-index: 2;
     }
-    .envelope-flap.open { transform: rotateX(180deg); }
+
+    .envelope-flap.open {
+      transform: rotateX(180deg);
+    }
 
     .envelope-body {
       position: absolute;
-      bottom: 0; left: 0;
-      width: 0; height: 0;
-      border-left: 120px solid #ffc2d1;
-      border-right: 120px solid #ffc2d1;
-      border-bottom: 100px solid #ffccd5;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: calc(min(240px, 70vw) / 2) solid #ffc2d1;
+      border-right: calc(min(240px, 70vw) / 2) solid #ffc2d1;
+      border-bottom: calc(min(160px, 46vw) * 0.625) solid #ffccd5;
     }
 
     .envelope-heart {
       position: absolute;
-      top: 50%; left: 50%;
+      top: 50%;
+      left: 50%;
       transform: translate(-50%, -50%);
       font-size: 36px;
       z-index: 1;
@@ -293,8 +419,8 @@
       border-radius: 16px;
       padding: 32px 28px;
       max-width: 380px;
-      width: 90vw;
-      box-shadow: 0 12px 48px rgba(139,26,58,0.15);
+      width: min(90vw, calc(100vw - 32px));
+      box-shadow: 0 12px 48px rgba(139, 26, 58, 0.15);
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -303,7 +429,9 @@
 
     .card-bar {
       position: absolute;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       height: 4px;
       background: linear-gradient(90deg, #ff4d6d, #ff85a1, #ff4d6d);
     }
@@ -317,6 +445,7 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
+
     .card-upload:hover {
       border-color: #ff85a1;
       background: linear-gradient(135deg, #ffe8ee, #ffd6e0);
@@ -326,33 +455,36 @@
       margin-bottom: 16px;
       position: relative;
     }
+
     .card-image img {
       width: 100%;
       max-height: 240px;
       object-fit: cover;
       border-radius: 12px;
       border: 3px solid #ffc2d1;
-      box-shadow: 0 4px 16px rgba(255,77,109,0.15);
+      box-shadow: 0 4px 16px rgba(255, 77, 109, 0.15);
     }
+
     .card-image button {
       position: absolute;
-      bottom: 8px; right: 8px;
-      background: rgba(255,255,255,0.9);
+      bottom: 8px;
+      right: 8px;
+      background: rgba(255, 255, 255, 0.9);
       border: none;
       border-radius: 50%;
-      width: 32px; height: 32px;
+      width: 32px;
+      height: 32px;
       cursor: pointer;
       font-size: 14px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     }
 
     .card-quote {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
+      font-family: 'Pangolin', cursive;
+      font-size: 22px;
       color: #8b1a3a;
-      font-style: italic;
       margin: 0 0 12px 0;
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     .card-closing {
@@ -374,6 +506,151 @@
       font-size: 12px;
       color: #d4839a;
       z-index: 1;
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    /* ===== Mobile Responsive ===== */
+    @media (max-width: 480px) {
+      .emoji-main {
+        font-size: clamp(48px, 14vw, 64px);
+      }
+
+      .title {
+        font-size: clamp(24px, 7vw, 36px);
+      }
+
+      .yes-btn {
+        padding: 14px 36px;
+        font-size: 16px;
+      }
+
+      .no-btn {
+        padding: 10px 24px;
+        font-size: 14px;
+      }
+
+      .btn-row {
+        gap: 12px;
+      }
+
+      #ask-stage {
+        gap: 20px;
+        padding: 16px 16px;
+      }
+
+      #yes-stage {
+        gap: 18px;
+        padding: 16px 16px 80px;
+      }
+
+      .yes-emoji {
+        font-size: 60px;
+      }
+
+      .yes-title {
+        font-size: clamp(26px, 7vw, 40px);
+      }
+
+      .yes-message {
+        font-size: clamp(14px, 3.5vw, 18px);
+        max-width: 320px;
+      }
+
+      .card {
+        padding: 24px 20px;
+        border-radius: 14px;
+      }
+
+      .card-quote {
+        font-size: 19px;
+      }
+
+      .card-closing {
+        font-size: 14px;
+      }
+
+      .card-upload {
+        padding: 20px 12px;
+      }
+
+      .envelope-label {
+        font-size: 13px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+        padding: 0 8px;
+      }
+
+      .footer {
+        font-size: 11px;
+        bottom: 12px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .emoji-main {
+        font-size: 44px;
+      }
+
+      .title {
+        font-size: clamp(20px, 6.5vw, 30px);
+      }
+
+      .yes-btn {
+        padding: 12px 28px;
+        font-size: 15px;
+      }
+
+      .no-btn {
+        padding: 10px 20px;
+        font-size: 13px;
+      }
+
+      #ask-stage {
+        gap: 16px;
+      }
+
+      .card {
+        padding: 20px 16px;
+      }
+
+      .card-quote {
+        font-size: 17px;
+      }
+
+      .yes-emoji {
+        font-size: 48px;
+      }
+
+      .yes-title {
+        font-size: clamp(20px, 6vw, 34px);
+      }
+    }
+
+    /* Landscape phone */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .emoji-main {
+        font-size: 40px;
+      }
+
+      #ask-stage {
+        gap: 12px;
+        padding: 8px 16px;
+      }
+
+      #yes-stage {
+        gap: 12px;
+        padding: 8px 16px 60px;
+      }
+
+      .title {
+        font-size: clamp(20px, 4vw, 30px);
+      }
+
+      .yes-emoji {
+        font-size: 40px;
+      }
     }
 
     .confetti-piece {
@@ -386,15 +663,185 @@
 
     .firework-particle {
       position: absolute;
-      width: 8px; height: 8px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      left: 50%; top: 50%;
+      left: 50%;
+      top: 50%;
       animation: fireworkBurst 1.2s ease-out forwards;
     }
 
-    .hidden { display: none; }
+    .hidden {
+      display: none !important;
+    }
+
+    /* ===== Perspective Editor Overlay ===== */
+    .perspective-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: radial-gradient(ellipse at 50% 40%, rgba(60, 10, 25, 0.92) 0%, rgba(20, 5, 10, 0.95) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      animation: fadeInOverlay 0.3s ease;
+    }
+
+    @keyframes fadeInOverlay {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .perspective-header {
+      color: #ffccd5;
+      font-family: 'Pangolin', cursive;
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      text-align: center;
+      text-shadow: 0 2px 12px rgba(255, 77, 109, 0.25);
+    }
+
+    .perspective-viewport {
+      width: min(320px, 85vw);
+      height: min(240px, 60vw);
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      border: 3px solid rgba(255, 179, 198, 0.6);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+      touch-action: none;
+      cursor: grab;
+      background: #1a1a1a;
+    }
+
+    .perspective-viewport:active {
+      cursor: grabbing;
+    }
+
+    .perspective-viewport img {
+      position: absolute;
+      transform-origin: 0 0;
+      user-select: none;
+      -webkit-user-select: none;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    .perspective-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 20px;
+      width: min(320px, 85vw);
+    }
+
+    .perspective-controls label {
+      color: #ffb3c6;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .zoom-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      flex: 1;
+      height: 4px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, #ff4d6d, #ff85a1);
+      outline: none;
+    }
+
+    .zoom-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+    }
+
+    .zoom-slider::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      border: none;
+    }
+
+    .perspective-hint {
+      color: rgba(255, 194, 209, 0.5);
+      font-family: 'Quicksand', sans-serif;
+      font-size: 12px;
+      font-style: italic;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .perspective-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .perspective-confirm-btn {
+      background: linear-gradient(135deg, #ff4d6d 0%, #ff758f 50%, #c9184a 100%);
+      color: white;
+      border: none;
+      padding: 14px 36px;
+      border-radius: 60px;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(255, 77, 109, 0.4);
+      transition: all 0.3s ease;
+      touch-action: manipulation;
+    }
+
+    .perspective-confirm-btn:hover {
+      filter: brightness(1.1);
+      box-shadow: 0 6px 28px rgba(255, 77, 109, 0.5);
+    }
+
+    .perspective-confirm-btn:active {
+      transform: scale(0.96);
+    }
+
+    .perspective-cancel-btn {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffc2d1;
+      border: 1.5px solid rgba(255, 194, 209, 0.3);
+      padding: 14px 28px;
+      border-radius: 60px;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      touch-action: manipulation;
+    }
+
+    .perspective-cancel-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
   </style>
 </head>
+
 <body>
   <!-- Background Hearts -->
   <div id="bg-hearts"></div>
@@ -422,14 +869,14 @@
     <h1 class="yes-title">I knew you'd say yes, Jane! 🎉</h1>
     <p class="yes-message">
       Thank you for being my wife<br />
-      I love you, forever and always 💖
+      The time will tell how much I love you 💖
     </p>
     <p class="yes-tease hidden" id="yes-tease"></p>
 
     <div class="envelope-area">
       <!-- Envelope -->
       <div class="envelope-wrapper" id="envelope-wrapper" onclick="openEnvelope()">
-        <p class="envelope-label">Tap to open your card from hubby ✉️</p>
+        <p class="envelope-label">Tap to open your card from your lover ✉️</p>
         <div class="envelope">
           <div class="envelope-flap" id="envelope-flap"></div>
           <div class="envelope-body"></div>
@@ -465,6 +912,25 @@
   </div>
 
   <!-- Confetti container -->
+  <!-- Perspective Editor Overlay -->
+  <div class="perspective-overlay hidden" id="perspective-overlay">
+    <p class="perspective-header">📐 Adjust your photo</p>
+    <div class="perspective-viewport" id="perspective-viewport">
+      <img id="perspective-img" src="" alt="Adjust" />
+    </div>
+    <div class="perspective-controls">
+      <label>🔍</label>
+      <input type="range" class="zoom-slider" id="zoom-slider" min="100" max="300" value="100" />
+      <label id="zoom-label">1.0×</label>
+    </div>
+    <p class="perspective-hint">Drag to reposition · Slide to zoom</p>
+    <div class="perspective-actions">
+      <button class="perspective-cancel-btn" id="perspective-cancel-btn" onclick="cancelPerspective()">Cancel</button>
+      <button class="perspective-confirm-btn" id="perspective-confirm-btn" onclick="confirmPerspective()">Use This Photo
+        💕</button>
+    </div>
+  </div>
+
   <div id="confetti-container"></div>
   <div id="fireworks-container"></div>
 
@@ -508,15 +974,18 @@
     // --- Move No Button ---
     function moveNoButton() {
       const btn = document.getElementById('no-btn-escaped');
-      const btnWidth = 180;
-      const btnHeight = 60;
-      const pad = 20;
-      const maxX = Math.max(pad, window.innerWidth - btnWidth - pad);
-      const maxY = Math.max(pad, window.innerHeight - btnHeight - pad);
-      const x = pad + Math.floor(Math.random() * (maxX - pad));
-      const y = pad + Math.floor(Math.random() * (maxY - pad));
-      btn.style.left = Math.min(Math.max(20, x), window.innerWidth - 180) + 'px';
-      btn.style.top = Math.min(Math.max(20, y), window.innerHeight - 60) + 'px';
+      const btnRect = btn.getBoundingClientRect();
+      const btnWidth = Math.max(btnRect.width, 120);
+      const btnHeight = Math.max(btnRect.height, 44);
+      const pad = 16;
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      const maxX = Math.max(pad, vw - btnWidth - pad);
+      const maxY = Math.max(pad, vh - btnHeight - pad);
+      const x = pad + Math.floor(Math.random() * Math.max(1, maxX - pad));
+      const y = pad + Math.floor(Math.random() * Math.max(1, maxY - pad));
+      btn.style.left = Math.min(Math.max(pad, x), vw - btnWidth - pad) + 'px';
+      btn.style.top = Math.min(Math.max(pad, y), vh - btnHeight - pad) + 'px';
     }
 
     function updateNoScale() {
@@ -525,7 +994,10 @@
     }
 
     function updateYesScale() {
-      const scale = Math.min(1 + noCount * 0.18, 2.8);
+      const isMobile = window.innerWidth <= 480;
+      const maxScale = isMobile ? 1.8 : 2.8;
+      const step = isMobile ? 0.12 : 0.18;
+      const scale = Math.min(1 + noCount * step, maxScale);
       document.getElementById('yes-btn').style.transform = `scale(${scale})`;
     }
 
@@ -686,14 +1158,229 @@
       const file = event.target.files[0];
       if (file) {
         const reader = new FileReader();
-        reader.onload = function(e) {
-          document.getElementById('card-img').src = e.target.result;
-          document.getElementById('card-upload-area').classList.add('hidden');
-          document.getElementById('card-image-area').classList.remove('hidden');
+        reader.onload = function (e) {
+          openPerspectiveEditor(e.target.result);
         };
         reader.readAsDataURL(file);
       }
     }
+
+    // --- Perspective Editor ---
+    let perspState = {
+      imgSrc: '',
+      imgW: 0,
+      imgH: 0,
+      scale: 1,
+      offsetX: 0,
+      offsetY: 0,
+      dragging: false,
+      startX: 0,
+      startY: 0,
+      startOffX: 0,
+      startOffY: 0,
+      pinchStartDist: 0,
+      pinchStartScale: 1,
+    };
+
+    function openPerspectiveEditor(src) {
+      perspState.imgSrc = src;
+      const overlay = document.getElementById('perspective-overlay');
+      const img = document.getElementById('perspective-img');
+      const slider = document.getElementById('zoom-slider');
+
+      img.src = src;
+      slider.value = 100;
+      document.getElementById('zoom-label').textContent = '1.0×';
+
+      // Wait for image to load to get dimensions
+      img.onload = function () {
+        const viewport = document.getElementById('perspective-viewport');
+        const vw = viewport.clientWidth;
+        const vh = viewport.clientHeight;
+
+        perspState.imgW = img.naturalWidth;
+        perspState.imgH = img.naturalHeight;
+
+        // Fit image to cover the viewport
+        const fitScale = Math.max(vw / perspState.imgW, vh / perspState.imgH);
+        perspState.scale = fitScale;
+        perspState.offsetX = (vw - perspState.imgW * fitScale) / 2;
+        perspState.offsetY = (vh - perspState.imgH * fitScale) / 2;
+
+        // Set slider range based on fit scale
+        slider.min = Math.round(fitScale * 100);
+        slider.max = Math.round(fitScale * 100 * 3);
+        slider.value = Math.round(fitScale * 100);
+
+        applyPerspTransform();
+      };
+
+      overlay.classList.remove('hidden');
+      initPerspectiveEvents();
+    }
+
+    function applyPerspTransform() {
+      const img = document.getElementById('perspective-img');
+      img.style.transform = `translate(${perspState.offsetX}px, ${perspState.offsetY}px) scale(${perspState.scale})`;
+      img.style.width = perspState.imgW + 'px';
+      img.style.height = perspState.imgH + 'px';
+    }
+
+    function clampOffsets() {
+      const viewport = document.getElementById('perspective-viewport');
+      const vw = viewport.clientWidth;
+      const vh = viewport.clientHeight;
+      const sw = perspState.imgW * perspState.scale;
+      const sh = perspState.imgH * perspState.scale;
+
+      // Keep image covering viewport
+      if (sw >= vw) {
+        perspState.offsetX = Math.min(0, Math.max(vw - sw, perspState.offsetX));
+      } else {
+        perspState.offsetX = (vw - sw) / 2;
+      }
+      if (sh >= vh) {
+        perspState.offsetY = Math.min(0, Math.max(vh - sh, perspState.offsetY));
+      } else {
+        perspState.offsetY = (vh - sh) / 2;
+      }
+    }
+
+    function initPerspectiveEvents() {
+      const viewport = document.getElementById('perspective-viewport');
+      const slider = document.getElementById('zoom-slider');
+
+      // --- Slider zoom ---
+      slider.oninput = function () {
+        const newScale = parseInt(slider.value) / 100;
+        const viewport = document.getElementById('perspective-viewport');
+        const vw = viewport.clientWidth;
+        const vh = viewport.clientHeight;
+        const cx = vw / 2;
+        const cy = vh / 2;
+
+        // Zoom towards center
+        perspState.offsetX = cx - (cx - perspState.offsetX) * (newScale / perspState.scale);
+        perspState.offsetY = cy - (cy - perspState.offsetY) * (newScale / perspState.scale);
+        perspState.scale = newScale;
+
+        clampOffsets();
+        applyPerspTransform();
+        document.getElementById('zoom-label').textContent = newScale.toFixed(1) + '×';
+      };
+
+      // --- Mouse / Touch drag ---
+      viewport.onpointerdown = function (e) {
+        if (e.pointerType === 'touch' && e.isPrimary === false) return;
+        perspState.dragging = true;
+        perspState.startX = e.clientX;
+        perspState.startY = e.clientY;
+        perspState.startOffX = perspState.offsetX;
+        perspState.startOffY = perspState.offsetY;
+        viewport.setPointerCapture(e.pointerId);
+        e.preventDefault();
+      };
+
+      viewport.onpointermove = function (e) {
+        if (!perspState.dragging) return;
+        const dx = e.clientX - perspState.startX;
+        const dy = e.clientY - perspState.startY;
+        perspState.offsetX = perspState.startOffX + dx;
+        perspState.offsetY = perspState.startOffY + dy;
+        clampOffsets();
+        applyPerspTransform();
+      };
+
+      viewport.onpointerup = viewport.onpointercancel = function () {
+        perspState.dragging = false;
+      };
+
+      // --- Pinch to zoom (touch) ---
+      viewport.ontouchstart = function (e) {
+        if (e.touches.length === 2) {
+          e.preventDefault();
+          const t = e.touches;
+          perspState.pinchStartDist = Math.hypot(t[1].clientX - t[0].clientX, t[1].clientY - t[0].clientY);
+          perspState.pinchStartScale = perspState.scale;
+        }
+      };
+
+      viewport.ontouchmove = function (e) {
+        if (e.touches.length === 2) {
+          e.preventDefault();
+          const t = e.touches;
+          const dist = Math.hypot(t[1].clientX - t[0].clientX, t[1].clientY - t[0].clientY);
+          const ratio = dist / perspState.pinchStartDist;
+          const minScale = parseInt(slider.min) / 100;
+          const maxScale = parseInt(slider.max) / 100;
+          const newScale = Math.min(maxScale, Math.max(minScale, perspState.pinchStartScale * ratio));
+
+          // Zoom toward pinch midpoint
+          const rect = viewport.getBoundingClientRect();
+          const cx = ((t[0].clientX + t[1].clientX) / 2) - rect.left;
+          const cy = ((t[0].clientY + t[1].clientY) / 2) - rect.top;
+
+          perspState.offsetX = cx - (cx - perspState.offsetX) * (newScale / perspState.scale);
+          perspState.offsetY = cy - (cy - perspState.offsetY) * (newScale / perspState.scale);
+          perspState.scale = newScale;
+
+          slider.value = Math.round(newScale * 100);
+          document.getElementById('zoom-label').textContent = newScale.toFixed(1) + '×';
+          clampOffsets();
+          applyPerspTransform();
+        }
+      };
+    }
+
+    function confirmPerspective() {
+      const viewport = document.getElementById('perspective-viewport');
+      const vw = viewport.clientWidth;
+      const vh = viewport.clientHeight;
+
+      // Draw the visible portion onto a canvas
+      const canvas = document.createElement('canvas');
+      canvas.width = vw * 2;  // 2x for retina
+      canvas.height = vh * 2;
+      const ctx = canvas.getContext('2d');
+      ctx.scale(2, 2);
+
+      const img = new Image();
+      img.onload = function () {
+        ctx.drawImage(
+          img,
+          perspState.offsetX,
+          perspState.offsetY,
+          perspState.imgW * perspState.scale,
+          perspState.imgH * perspState.scale
+        );
+
+        const dataURL = canvas.toDataURL('image/jpeg', 0.92);
+        document.getElementById('card-img').src = dataURL;
+        document.getElementById('card-upload-area').classList.add('hidden');
+        document.getElementById('card-image-area').classList.remove('hidden');
+        closePerspective();
+      };
+      img.src = perspState.imgSrc;
+    }
+
+    function cancelPerspective() {
+      closePerspective();
+      // Reset file input so the same file can be re-selected
+      document.getElementById('file-input').value = '';
+    }
+
+    function closePerspective() {
+      const overlay = document.getElementById('perspective-overlay');
+      overlay.classList.add('hidden');
+      const viewport = document.getElementById('perspective-viewport');
+      viewport.onpointerdown = null;
+      viewport.onpointermove = null;
+      viewport.onpointerup = null;
+      viewport.onpointercancel = null;
+      viewport.ontouchstart = null;
+      viewport.ontouchmove = null;
+    }
   </script>
 </body>
+
 </html>
